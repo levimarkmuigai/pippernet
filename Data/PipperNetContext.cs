@@ -10,6 +10,7 @@ namespace PipperNet.Data
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options){}
 
     // Tables
+    public DbSet<Admin> Admin { get; set;}
     public DbSet<Subscription> Subscription { get; set;}
     public DbSet<Wallet> Wallet { get; set;}
     public DbSet<Payment> Payment { get; set;}

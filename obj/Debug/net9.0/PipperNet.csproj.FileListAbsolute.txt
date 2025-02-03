@@ -6,6 +6,7 @@
 /home/fullstackrookie/Documents/Projects/pippernet/PipperNet/obj/Debug/net9.0/PipperNet.MvcApplicationPartsAssemblyInfo.cache
 /home/fullstackrookie/Documents/Projects/pippernet/PipperNet/obj/Debug/net9.0/PipperNet.RazorAssemblyInfo.cache
 /home/fullstackrookie/Documents/Projects/pippernet/PipperNet/obj/Debug/net9.0/PipperNet.RazorAssemblyInfo.cs
+/home/fullstackrookie/Documents/Projects/pippernet/PipperNet/obj/Debug/net9.0/PipperNet.sourcelink.json
 /home/fullstackrookie/Documents/Projects/pippernet/PipperNet/bin/Debug/net9.0/appsettings.Development.json
 /home/fullstackrookie/Documents/Projects/pippernet/PipperNet/bin/Debug/net9.0/appsettings.json
 /home/fullstackrookie/Documents/Projects/pippernet/PipperNet/bin/Debug/net9.0/PipperNet.staticwebassets.runtime.json

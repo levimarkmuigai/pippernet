@@ -6,6 +6,7 @@ namespace PipperNet.Models
   public class ApplicationUser : IdentityUser<int>
   {
     public string Name { get; set;}  = string.Empty;
+    public string Role { get; set;}  = string.Empty;
 
     // Navigation.
     public Subscription? Subscription { get; set;}
