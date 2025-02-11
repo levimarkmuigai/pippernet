@@ -233,3 +233,8 @@
 /home/fullstackrookie/Documents/Projects/PipperNet/pippernet/obj/Debug/net8.0/PipperNet.genruntimeconfig.cache
 /home/fullstackrookie/Documents/Projects/PipperNet/pippernet/obj/Debug/net8.0/ref/PipperNet.dll
 /home/fullstackrookie/Documents/Projects/PipperNet/pippernet/obj/Debug/net8.0/PipperNet.csproj.CopyComplete
+/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/obj/Debug/net8.0/EFCoreNpgsqlNetTopologySuite.cs
+/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/bin/Debug/net8.0/NetTopologySuite.dll
+/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/bin/Debug/net8.0/NetTopologySuite.IO.PostGis.dll
+/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite.dll
+/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/bin/Debug/net8.0/Npgsql.NetTopologySuite.dll
