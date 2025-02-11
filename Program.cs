@@ -2,6 +2,9 @@ using PipperNet.Data;
 using PipperNet.Models;
 using PipperNet.Controllers;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -13,7 +16,9 @@ builder.Services.AddDbContext<AppDbContext>(
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     options.SignIn.RequireConfirmedAccount = true)
-      .AddEntityFrameworkStores<AppDbContext>();
+      .AddEntityFrameworkStores<AppDbContext>()
+      .AddDefaultUI()
+      .AddDefaultTokenProviders();
 
 
 // Add services to the container.
