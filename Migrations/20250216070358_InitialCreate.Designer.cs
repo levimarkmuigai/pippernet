@@ -12,7 +12,7 @@ using PipperNet.Data;
 namespace PipperNet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250211143453_InitialCreate")]
+    [Migration("20250216070358_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

@@ -35,7 +35,6 @@ namespace PipperNet.Controllers
       }
       return RedirectToAction("Index");
     }
-
   }
 }
 

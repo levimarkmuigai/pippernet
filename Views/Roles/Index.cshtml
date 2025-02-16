@@ -1,7 +1,7 @@
 @using Microsoft.AspNetCore.Identity
 @model IEnumerable<IdentityRole>
   @{
-    ViewData["Title"] = "ROLES";
+    ViewData["Title"] = "Roles";
   }
 
 <h1> Application Roles </h1>
@@ -11,8 +11,8 @@
 <table class="table table-bordered">
     <thead>
       <tr>
-        <th>@Html.DisplayNameFor(model=>model.Id)</th>
-        <th>@Html.DisplayNameFor(model=>model.Name)</th>
+        <th>@Html.DisplayNameFor(model=>model.First ().Id)</th>
+        <th>@Html.DisplayNameFor(model=>model.First() .Name)</th>
         <th></th>
       </tr>
     </thead>
@@ -20,8 +20,8 @@
       @foreach(var item in Model)
       {
         <tr>
-        <td>@Html.DisplayNameFor(model=>item.Id)</td>
-        <td>@Html.DisplayNameFor(model=>item.Name)</td>
+        <td>@item.Id</td>
+        <td>@item.Name</td>
       </tr>
       }
     </tbody>
