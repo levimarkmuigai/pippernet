@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "s0J084fMzwxMDEEp0DoOkjnZwDzsGARVXlLglBfKhQEdVX48Y+tni97Ppogy2QdtbX4iMuXngG3pWQHWWRmoRA==",
+  "dgSpecHash": "Dm/229TudJOJ2QcASAAh46TGr5p9my/bsVuA+8FELig/Vzzj6PP+IKgLZ6zRM8LH3mFQ161blqwq0oL8vUQ/cw==",
   "success": true,
   "projectFilePath": "/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/PipperNet.csproj",
   "expectedPackageFiles": [
@@ -148,7 +148,7 @@
     "/home/fullstackrookie/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512",
     "/home/fullstackrookie/.nuget/packages/system.threading.tasks.dataflow/7.0.0/system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "/home/fullstackrookie/.nuget/packages/system.windows.extensions/7.0.0/system.windows.extensions.7.0.0.nupkg.sha512",
-    "/home/fullstackrookie/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.12/microsoft.aspnetcore.app.ref.8.0.12.nupkg.sha512"
+    "/home/fullstackrookie/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.13/microsoft.aspnetcore.app.ref.8.0.13.nupkg.sha512"
   ],
   "logs": []
 }
