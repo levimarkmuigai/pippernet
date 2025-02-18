@@ -20,7 +20,7 @@ public class AdminController : Controller
   public IActionResult GetUsers ()
   {
     var users = _context.ApplicationUser.ToList ();
-    return View("Index");
+    return View("Index", users);
   }
   
   // Get specific user by ID
