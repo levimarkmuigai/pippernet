@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PipperNet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+253afc42377f6b9b248f45be5adc0a1e46286394")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+932b790f8512362c654378ef0a8111278e5624e4")]
 [assembly: System.Reflection.AssemblyProductAttribute("PipperNet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PipperNet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
