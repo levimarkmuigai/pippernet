@@ -12,8 +12,8 @@ using PipperNet.Data;
 namespace PipperNet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250217134445_AddSubscriptionAndStatusToUser")]
-    partial class AddSubscriptionAndStatusToUser
+    [Migration("20250226103505_TableAdds")]
+    partial class TableAdds
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

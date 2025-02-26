@@ -5,7 +5,7 @@
 namespace PipperNet.Migrations
 {
     /// <inheritdoc />
-    public partial class TestUser : Migration
+    public partial class TableAdds : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

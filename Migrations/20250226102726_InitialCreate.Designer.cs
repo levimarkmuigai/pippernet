@@ -12,8 +12,8 @@ using PipperNet.Data;
 namespace PipperNet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250218120316_TestUser")]
-    partial class TestUser
+    [Migration("20250226102726_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

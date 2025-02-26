@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/PipperNet.csproj": {}
+    "/home/levi/Documents/Projects/pippernet/pippernet/PipperNet.csproj": {}
   },
   "projects": {
-    "/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/PipperNet.csproj": {
+    "/home/levi/Documents/Projects/pippernet/pippernet/PipperNet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/PipperNet.csproj",
+        "projectUniqueName": "/home/levi/Documents/Projects/pippernet/pippernet/PipperNet.csproj",
         "projectName": "PipperNet",
-        "projectPath": "/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/PipperNet.csproj",
-        "packagesPath": "/home/fullstackrookie/.nuget/packages/",
-        "outputPath": "/home/fullstackrookie/Documents/Projects/PipperNet/pippernet/obj/",
+        "projectPath": "/home/levi/Documents/Projects/pippernet/pippernet/PipperNet.csproj",
+        "packagesPath": "/home/levi/.nuget/packages/",
+        "outputPath": "/home/levi/Documents/Projects/pippernet/pippernet/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/fullstackrookie/.nuget/NuGet/NuGet.Config"
+          "/home/levi/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -86,12 +90,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.13, 8.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -100,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.113/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.112/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
