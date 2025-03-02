@@ -4,25 +4,39 @@
     ViewData["Title"] = "Client Dashboard";
 }
 
-<h2 class="text-center my-4">Welcome to Your Dashboard</h2>
+<h2 class="text-center my-4">Welcome to Your Dashboard 🎉</h2>
 
-<!-- Loading Animation -->
+<!-- Fun Loading Animation -->
 <div id="loading" class="text-center my-5">
-    <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
+    <p class="fs-4">Fetching your awesome subscription... 🚀</p>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-grow text-primary mx-2" role="status"></div>
+        <div class="spinner-grow text-success mx-2" role="status"></div>
+        <div class="spinner-grow text-warning mx-2" role="status"></div>
     </div>
-    <p>Loading your subscription details...</p>
 </div>
 
 <!-- Subscription Details (Hidden Initially) -->
-<div id="content" class="card shadow-sm p-4 mx-auto" style="max-width: 500px; display: none;">
-    <h4>Your Subscription Details</h4>
-    <p><strong>Plan:</strong> @Model.Subscription</p>
-    <p><strong>Status:</strong> 
-        <span class="badge @(Model.Status == "Active" ? "bg-success" : "bg-danger")">
-            @Model.Status
-        </span>
-    </p>
+<div id="content" class="container text-center" style="display: none;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4">
+                <h4 class="mb-3">Your Subscription Details 📜</h4>
+                <p class="fs-5"><strong>Plan:</strong> @Model.Subscription</p>
+                <p class="fs-5"><strong>Status:</strong> 
+                    <span class="badge @(Model.Status == "Active" ? "bg-success" : "bg-danger") p-2">
+                        @Model.Status
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Additional Space with Encouraging Message -->
+    <div class="mt-5 text-center">
+        <h5>Keep exploring and make the most of your plan! 🎯</h5>
+        <p class="text-muted">Upgrade options coming soon... 😉</p>
+    </div>
 </div>
 
 <!-- JavaScript to Handle Loading Animation -->
@@ -31,6 +45,6 @@
         setTimeout(function () {
             document.getElementById("loading").style.display = "none";
             document.getElementById("content").style.display = "block";
-        }, 1500); // Simulates a loading delay of 1.5 seconds
+        }, 2000); // Simulates a fun loading delay of 2 seconds
     });
 </script>
