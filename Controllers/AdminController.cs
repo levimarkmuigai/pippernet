@@ -18,12 +18,22 @@ public class AdminController : Controller
     }
 
     // Get Users From Admin Panel
-    [HttpGet("GetUsers")]
+   [HttpGet("GetUsers")]
     public async Task<IActionResult> GetUsers()
     {
-        var users = await _context.ApplicationUser.ToListAsync();
+        var adminRoleId = await _context.Roles
+            .Where(r => r.Name == "Admin")
+            .Select(r => r.Id)
+            .FirstOrDefaultAsync();
+
+        var users = await _context.ApplicationUser
+            .Where(u => !_context.UserRoles
+            .Any(ur => ur.UserId == u.Id && ur.RoleId == adminRoleId))
+            .ToListAsync();
+
         return View("Index", users);
     }
+
 
     // Get specific user by ID
     [HttpGet("GetUserById/{id}")]
