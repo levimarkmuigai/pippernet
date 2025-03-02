@@ -11,6 +11,21 @@ body {
   min-height: 100vh;
 }
 
+.wifi-tips ul {
+  list-style-type: disc; /* Ensures bullets are visible */
+  list-style-position: inside; /* Aligns bullets with text */
+  padding-left: 20px; /* Adds spacing for proper alignment */
+}
+
+.wifi-tips li {
+  background: #175480;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+
 /* Gradient text effect for main titles */
 h1, h2, h3 {
   font-weight: bold;
