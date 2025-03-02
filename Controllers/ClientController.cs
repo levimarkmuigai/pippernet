@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PipperNet.Controllers
 {
-    //[Authorize(Roles = "Client")] // Restricts access to Clients only
+    [Authorize(Roles = "Client")] // Restricts access to Clients only
     public class ClientController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
