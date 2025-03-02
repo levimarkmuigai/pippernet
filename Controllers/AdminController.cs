@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using System.Threading.Tasks;
 using PipperNet.Models;
 using PipperNet.Data;
 
 [Route("Admin")]
+[Authorize(Roles = "Admin")]
 public class AdminController : Controller
 {
     private readonly AppDbContext _context;
