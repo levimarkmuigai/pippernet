@@ -23,7 +23,7 @@
             <div class="card shadow-lg p-4">
                 <h4 class="mb-3">Your Subscription Details 📜</h4>
                 <p class="fs-5"><strong>Plan:</strong> @Model.Subscription</p>
-                 <p class="fs-5"><strong>Duration:</strong> @Model.SubscriptionDuration days</p>
+                <p class="fs-5"><strong>Duration:</strong> @Model.SubscriptionDuration days</p>
                 <p class="fs-5"><strong>Status:</strong> 
                     <span class="badge @(Model.Status == "Active" ? "bg-success" : "bg-danger") p-2">
                         @Model.Status
@@ -33,6 +33,37 @@
         </div>
     </div>
     
+    <!-- Recharge Section -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow p-4">
+                    <h4 class="text-center">Recharge Your Account 🔋</h4>
+                    <form id="rechargeForm">
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label fw-bold">📞 Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="form-label fw-bold">💰 Amount</label>
+                            <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Recharge 🚀</button>
+                    </form>
+
+                    <!-- Loading Animation (Hidden Initially) -->
+                    <div id="loadingRecharge" class="text-center mt-3" style="display: none;">
+                        <p class="text-muted">Processing your recharge... ⏳</p>
+                        <div class="spinner-border text-primary" role="status"></div>
+                    </div>
+
+                    <!-- Success/Error Message -->
+                    <p id="rechargeMessage" class="text-center mt-3 fw-bold"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Informational Sections -->
     <div class="row mt-5">
         <div class="col-md-3 d-none d-md-block">
@@ -56,12 +87,71 @@
     </div>
 </div>
 
-<!-- JavaScript to Handle Loading Animation -->
+<!-- JavaScript to Handle Loading Animation and Recharge Request -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
             document.getElementById("loading").style.display = "none";
             document.getElementById("content").style.display = "block";
-        }, 3000); // Simulates a fun loading delay of 3 seconds
+        }, 3000);
     });
+
+    document.getElementById("rechargeForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const phoneNumberInput = document.getElementById("phoneNumber");
+    const amountInput = document.getElementById("amount");
+    const rechargeMessage = document.getElementById("rechargeMessage");
+    const loading = document.getElementById("loadingRecharge");
+
+    // Show loading animation
+    rechargeMessage.innerText = "";
+    loading.style.display = "block";
+
+    try {
+        const response = await fetch("/api/recharge", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ phoneNumber: phoneNumberInput.value, amount: amountInput.value })
+        });
+
+        const result = await response.json();
+        loading.style.display = "none";
+
+        if (response.ok) {
+            rechargeMessage.innerHTML = `<span class="text-success">✅ ${result.message}</span>`;
+
+            // Clear the form inputs
+            phoneNumberInput.value = "";
+            amountInput.value = "";
+
+            // Reload subscription details after a short delay
+            setTimeout(fetchSubscriptionDetails, 2000);
+        } else {
+            rechargeMessage.innerHTML = `<span class="text-danger">❌ ${result.message}</span>`;
+        }
+    } catch (error) {
+        loading.style.display = "none";
+        rechargeMessage.innerHTML = `<span class="text-danger">❌ Error processing request. Please try again.</span>`;
+    }
+});
+
+// Function to fetch and update subscription details
+async function fetchSubscriptionDetails() {
+    try {
+        const response = await fetch("/api/subscription");
+        if (response.ok) {
+            const data = await response.json();
+
+            // Update subscription details on the page
+            document.querySelector(".card p:nth-child(2)").innerHTML = `<strong>Plan:</strong> ${data.subscription}`;
+            document.querySelector(".card p:nth-child(3)").innerHTML = `<strong>Duration:</strong> ${data.subscriptionDuration} days`;
+            document.querySelector(".card p:nth-child(4) span").innerText = data.status;
+            document.querySelector(".card p:nth-child(4) span").className = `badge ${data.status === "Active" ? "bg-success" : "bg-danger"} p-2`;
+        }
+    } catch (error) {
+        console.error("Failed to refresh subscription details:", error);
+    }
+}
+
 </script>
