@@ -29,7 +29,8 @@ namespace PipperNet.Controllers
             var viewModel = new ClientViewModel
             {
                 Subscription = user.Subscription, // Assigned by Admin
-                Status = user.Status // Assigned by Admin
+                Status = user.Status, // Assigned by Admin
+                SubscriptionDuration = user.SubscriptionDuration // Assigned by Admin
             };
 
             return View(viewModel); // Render Client Dashboard

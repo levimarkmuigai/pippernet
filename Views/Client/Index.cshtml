@@ -23,6 +23,7 @@
             <div class="card shadow-lg p-4">
                 <h4 class="mb-3">Your Subscription Details 📜</h4>
                 <p class="fs-5"><strong>Plan:</strong> @Model.Subscription</p>
+                 <p class="fs-5"><strong>Duration:</strong> @Model.SubscriptionDuration days</p>
                 <p class="fs-5"><strong>Status:</strong> 
                     <span class="badge @(Model.Status == "Active" ? "bg-success" : "bg-danger") p-2">
                         @Model.Status
@@ -32,10 +33,10 @@
         </div>
     </div>
     
-    <!-- Decorative Side Elements for Better Layout -->
+    <!-- Informational Sections -->
     <div class="row mt-5">
         <div class="col-md-3 d-none d-md-block">
-            <div class="p-3 text-muted" style="border-left: 4px solid #ddd;">
+            <div class="p-3 text-muted border-start border-4 border-secondary">
                 <h6 class="fw-bold">💡 Tip:</h6>
                 <p>Stay updated with the latest features and upcoming plan upgrades!</p>
             </div>
@@ -47,7 +48,7 @@
         </div>
         
         <div class="col-md-3 d-none d-md-block">
-            <div class="p-3 text-muted" style="border-right: 4px solid #ddd;">
+            <div class="p-3 text-muted border-end border-4 border-secondary">
                 <h6 class="fw-bold">📊 Stats:</h6>
                 <p>Did you know? 85% of users maximize their plans with add-ons!</p>
             </div>
