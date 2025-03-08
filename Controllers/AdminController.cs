@@ -62,18 +62,20 @@ public class AdminController : Controller
             return NotFound();
         }
 
-        // Validate Subscription & Status
+        // Validate Subscription,Status & Duration
         var validSubscriptions = new[] { "Basic", "Standard", "Premium" };
         var validStatuses = new[] { "Active", "Inactive" };
+        var validateDurations = new[] { 30,90,120 };
 
         if (!validSubscriptions.Contains(updatedUser.Subscription) || !validStatuses.Contains(updatedUser.Status))
         {
-            return BadRequest("Invalid Subscription or Status value.");
+            return BadRequest("Invalid Subscription,Status or Duration value.");
         }
 
         // Update only allowed properties
         user.Subscription = updatedUser.Subscription;
         user.Status = updatedUser.Status;
+        user.SubscriptionDuration = updatedUser.SubscriptionDuration;
 
         await _context.SaveChangesAsync();
         return Json(user);
