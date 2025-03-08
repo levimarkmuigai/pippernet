@@ -4,6 +4,12 @@
     ViewData["Title"] = "Client Dashboard";
 }
 
+<!-- Wallet Balance Display -->
+<div class="wallet-balance position-absolute top-0 start-0 m-3 p-3 bg-dark text-white rounded shadow-lg">
+    <h5 class="mb-0">💰 Wallet Balance</h5>
+    <p class="fs-4 fw-bold" id="walletBalance">Ksh. @Model.WalletBalance</p>
+</div>
+
 <h2 class="text-center my-4">Welcome to Your Dashboard 🎉</h2>
 
 <!-- Fun Loading Animation -->
@@ -16,7 +22,7 @@
     </div>
 </div>
 
-<!-- Subscription Details (Hidden Initially) -->
+<!-- Subscription & Recharge Section (Hidden Initially) -->
 <div id="content" class="container text-center" style="display: none;">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -63,28 +69,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Informational Sections -->
-    <div class="row mt-5">
-        <div class="col-md-3 d-none d-md-block">
-            <div class="p-3 text-muted border-start border-4 border-secondary">
-                <h6 class="fw-bold">💡 Tip:</h6>
-                <p>Stay updated with the latest features and upcoming plan upgrades!</p>
-            </div>
-        </div>
-        
-        <div class="col-md-6 text-center">
-            <h5>Keep exploring and make the most of your plan! 🎯</h5>
-            <p class="text-muted">Upgrade options coming soon... 😉</p>
-        </div>
-        
-        <div class="col-md-3 d-none d-md-block">
-            <div class="p-3 text-muted border-end border-4 border-secondary">
-                <h6 class="fw-bold">📊 Stats:</h6>
-                <p>Did you know? 85% of users maximize their plans with add-ons!</p>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- JavaScript to Handle Loading Animation and Recharge Request -->
@@ -97,61 +81,75 @@
     });
 
     document.getElementById("rechargeForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
+        event.preventDefault();
 
-    const phoneNumberInput = document.getElementById("phoneNumber");
-    const amountInput = document.getElementById("amount");
-    const rechargeMessage = document.getElementById("rechargeMessage");
-    const loading = document.getElementById("loadingRecharge");
+        const phoneNumberInput = document.getElementById("phoneNumber");
+        const amountInput = document.getElementById("amount");
+        const rechargeMessage = document.getElementById("rechargeMessage");
+        const loading = document.getElementById("loadingRecharge");
+        const walletBalance = document.getElementById("walletBalance");
 
-    // Show loading animation
-    rechargeMessage.innerText = "";
-    loading.style.display = "block";
+        // Show loading animation
+        rechargeMessage.innerText = "";
+        loading.style.display = "block";
 
-    try {
-        const response = await fetch("/api/recharge", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ phoneNumber: phoneNumberInput.value, amount: amountInput.value })
-        });
+        try {
+            const response = await fetch("/api/recharge", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ phoneNumber: phoneNumberInput.value, amount: amountInput.value })
+            });
 
-        const result = await response.json();
-        loading.style.display = "none";
+            const result = await response.json();
+            loading.style.display = "none";
 
-        if (response.ok) {
-            rechargeMessage.innerHTML = `<span class="text-success">✅ ${result.message}</span>`;
+            if (response.ok) {
+                rechargeMessage.innerHTML = `<span class="text-success">✅ ${result.message}</span>`;
 
-            // Clear the form inputs
-            phoneNumberInput.value = "";
-            amountInput.value = "";
+                // Clear the form inputs
+                phoneNumberInput.value = "";
+                amountInput.value = "";
 
-            // Reload subscription details after a short delay
-            setTimeout(fetchSubscriptionDetails, 2000);
-        } else {
-            rechargeMessage.innerHTML = `<span class="text-danger">❌ ${result.message}</span>`;
+                // Update wallet balance dynamically
+                walletBalance.innerText = `Ksh. ${result.newBalance}`;
+
+                // Reload subscription details after a short delay
+                setTimeout(fetchSubscriptionDetails, 2000);
+            } else {
+                rechargeMessage.innerHTML = `<span class="text-danger">❌ ${result.message}</span>`;
+            }
         }
-    } catch (error) {
-        loading.style.display = "none";
-        rechargeMessage.innerHTML = `<span class="text-danger">❌ Error processing request. Please try again.</span>`;
-    }
-});
-
-// Function to fetch and update subscription details
-async function fetchSubscriptionDetails() {
-    try {
-        const response = await fetch("/api/subscription");
-        if (response.ok) {
-            const data = await response.json();
-
-            // Update subscription details on the page
-            document.querySelector(".card p:nth-child(2)").innerHTML = `<strong>Plan:</strong> ${data.subscription}`;
-            document.querySelector(".card p:nth-child(3)").innerHTML = `<strong>Duration:</strong> ${data.subscriptionDuration} days`;
-            document.querySelector(".card p:nth-child(4) span").innerText = data.status;
-            document.querySelector(".card p:nth-child(4) span").className = `badge ${data.status === "Active" ? "bg-success" : "bg-danger"} p-2`;
+        catch (error) {
+            loading.style.display = "none";
+            rechargeMessage.innerHTML = `<span class="text-danger">❌ Error processing request. Please try again.</span>`;
         }
+    });
+
+    async function fetchSubscriptionDetails() {
+    try {
+        const response = await fetch("/api/subscription"); // Update with correct endpoint
+        if (!response.ok) {
+            throw new Error("Failed to fetch subscription details.");
+        }
+
+        const data = await response.json();
+
+        // Update subscription details on the page
+        document.querySelector(".card p:nth-child(2)").innerHTML = `<strong>Plan:</strong> ${data.subscription}`;
+        document.querySelector(".card p:nth-child(3)").innerHTML = `<strong>Duration:</strong> ${data.subscriptionDuration} days`;
+        document.querySelector(".card p:nth-child(4) span").innerText = data.status;
+        document.querySelector(".card p:nth-child(4) span").className = `badge ${data.status === "Active" ? "bg-success" : "bg-danger"} p-2`;
     } catch (error) {
         console.error("Failed to refresh subscription details:", error);
     }
 }
 
 </script>
+
+<!-- Modern Styling -->
+<style>
+    .wallet-balance {
+        min-width: 220px;
+        text-align: center;
+    }
+</style>

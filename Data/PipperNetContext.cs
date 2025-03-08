@@ -5,12 +5,14 @@ using Microsoft.AspNetCore.Identity;
 
 namespace PipperNet.Data
 {
-  public class AppDbContext : IdentityDbContext<ApplicationUser>
-  {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options){}
-    public DbSet<ApplicationUser> ApplicationUser { get; set;}
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
+        
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Wallet> Wallets { get; set; } 
 
-     protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
@@ -22,8 +24,13 @@ namespace PipperNet.Data
             builder.Entity<ApplicationUser>()
                 .Property(u => u.Status)
                 .HasDefaultValue(string.Empty);
+
+            // Configure Wallet relationships
+            builder.Entity<Wallet>()
+                .HasOne(w => w.User)
+                .WithOne()
+                .HasForeignKey<Wallet>(w => w.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
-
-  }
+    }
 }
-

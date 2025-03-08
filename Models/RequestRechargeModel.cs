@@ -1,4 +1,4 @@
-namespace Pippernet.Models
+namespace PipperNet.Models
 {
     public class RechargeRequest
     {

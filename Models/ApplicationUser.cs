@@ -10,5 +10,8 @@ namespace PipperNet.Models
     public string Status { get; set;} = string.Empty;
 
     public int SubscriptionDuration { get; set; } = 0;
+
+    public Wallet? Wallet { get; set; } 
+
   }
 }
